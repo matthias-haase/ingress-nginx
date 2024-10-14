@@ -32,5 +32,5 @@ spec:
           #
           set -x
           export DATETIME=$(date +%Y%m%d_%H%M%S)
-          apt install -y curl apt-utils
-          docker run hello-world
+          #apt install -y curl apt-utils
+          #docker run hello-world
