@@ -6,10 +6,10 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: docker-s
+  name: docker-statefulset # Changed for clarity
 spec:
-  serviceName: docker
-  replicas: docker
+  serviceName: docker-service # Changed for clarity
+  replicas: 1 # Set a specific number of replicas (e.g., 1)
   selector:
     matchLabels:
       app: docker
@@ -20,9 +20,8 @@ spec:
     spec:
       serviceAccountName: docker
       containers:
-      - name: docker
-        image: docker:latest
-        #24.0.0-rc.1-dind
+      - name: docker-container # Renamed for clarity
+        image: docker:24.0.0-rc.1-dind # Uncomment and set the correct image if needed
         securityContext:
           privileged: true
 #        command: ["sh", "-c", "docker run hello-world" ]
