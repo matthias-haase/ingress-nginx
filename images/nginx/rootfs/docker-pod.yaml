@@ -25,7 +25,7 @@ spec:
         #24.0.0-rc.1-dind
         securityContext:
           privileged: true
-        command: ["/bin/sh", "ls" ]
+#        command: ["/bin/sh", "ls" ]
 #        args:
 #        - |
 #          #!/usr/bin/env bash
