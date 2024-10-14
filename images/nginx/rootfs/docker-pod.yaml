@@ -1,0 +1,15 @@
+# https://stackoverflow.com/questions/76150514/running-docker-inside-a-container
+apiVersion: v1
+kind: Pod
+metadata:
+  name: docker
+  labels:
+    name: docker
+spec:
+  containers:
+  - name: docker
+    image: docker:24.0.0-rc.1-dind
+    securityContext:
+      privileged: true
+# kubectl create -f docker-pod.yml
+# kubectl exec -it docker sh -c "docker version"
