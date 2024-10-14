@@ -23,8 +23,8 @@ spec:
       - name: docker
         image: docker:latest
         #24.0.0-rc.1-dind
-#        securityContext:
-#          privileged: true
+        securityContext:
+          privileged: true
 #       command: ["/bin/bash", "-c" ]
 #       args:
 #       - |
