@@ -25,12 +25,12 @@ spec:
         #24.0.0-rc.1-dind
         securityContext:
           privileged: true
-#        command: ["/bin/sh", "ls" ]
-#        args:
-#        - |
-#          #!/usr/bin/env bash
-#          #
-#          set -x
-#          export DATETIME=$(date +%Y%m%d_%H%M%S)
-#          #apt install -y curl apt-utils
-#          #docker run hello-world
+        command: ["sh", "-c" ]
+        args:
+        - |
+          #!/usr/bin/env bash
+          #
+          set -x
+          export DATETIME=$(date +%Y%m%d_%H%M%S)
+          #apt install -y curl apt-utils
+          #docker run hello-world
