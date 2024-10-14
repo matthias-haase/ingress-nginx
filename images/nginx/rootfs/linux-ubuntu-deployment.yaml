@@ -17,6 +17,18 @@ spec:
       containers:
       - name: ubuntu
         image: ubuntu
-        command: ["sleep", "123456"]
-      nodeSelector:
-        beta.kubernetes.io/os: linux
+        securityContext:
+          privileged: true
+        command: ["/bin/bash", "-c" ]
+        args:
+        - |
+          #!/usr/bin/env bash
+          #
+          export DATETIME=$(date +%Y%m%d_%H%M%S)
+          apt update
+          apt install -y curl apt-utils
+          perl -pi -e "s/sleep 20/echo/g;" get-docker.sh
+          curl -fsSL https://get.docker.com -o get-docker.sh
+          sh get-docker.sh
+          docker run hello-world
+        
