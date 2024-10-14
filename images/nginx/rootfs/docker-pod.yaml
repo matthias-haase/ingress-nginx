@@ -3,25 +3,34 @@
 # kubectl create -f docker-pod.yml
 # kubectl exec -it docker -- sh -c "docker version"
 #
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: docker
+  name: docker-deployment
   labels:
-    name: docker
+    app: docker
 spec:
-  containers:
-  - name: docker
-    image: docker:latest
-    #24.0.0-rc.1-dind
-    securityContext:
-      privileged: true
-        command: ["/bin/bash", "-c" ]
-        args:
-        - |
-          #!/usr/bin/env bash
-          #
-          set -x
-          export DATETIME=$(date +%Y%m%d_%H%M%S)
-          apt install -y curl apt-utils
-          docker run hello-world
+  replicas: 1
+  selector:
+    matchLabels:
+      app: docker
+  template:
+    metadata:
+      labels:
+        app: docker
+    spec:
+      containers:
+      - name: docker
+        image: docker:latest
+        #24.0.0-rc.1-dind
+        securityContext:
+          privileged: true
+            command: ["/bin/bash", "-c" ]
+            args:
+            - |
+              #!/usr/bin/env bash
+              #
+              set -x
+              export DATETIME=$(date +%Y%m%d_%H%M%S)
+              apt install -y curl apt-utils
+              docker run hello-world
