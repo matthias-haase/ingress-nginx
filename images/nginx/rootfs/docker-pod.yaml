@@ -4,13 +4,12 @@
 # kubectl exec -it docker -- sh -c "docker version"
 #
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
-  name: docker-deployment
-  labels:
-    app: docker
+  name: docker
 spec:
-  replicas: 1
+  serviceName: docker
+  replicas: docker
   selector:
     matchLabels:
       app: docker
@@ -19,6 +18,7 @@ spec:
       labels:
         app: docker
     spec:
+      serviceAccountName: docker
       containers:
       - name: docker
         image: docker:latest
