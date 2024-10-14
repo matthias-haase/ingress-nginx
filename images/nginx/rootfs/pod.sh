@@ -1,4 +1,6 @@
 #!/bin/bash
+kubectl apply -f docker-pod.yaml
+kubectl wait -n default --for=condition=Ready pod --all
 kubectl exec -it docker -- sh -c "\
 docker version;\
 apk update;\
