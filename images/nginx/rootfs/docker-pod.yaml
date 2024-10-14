@@ -1,4 +1,8 @@
 # https://stackoverflow.com/questions/76150514/running-docker-inside-a-container
+#
+# kubectl create -f docker-pod.yml
+# kubectl exec -it docker -- sh -c "docker version"
+#
 apiVersion: v1
 kind: Pod
 metadata:
@@ -12,5 +16,12 @@ spec:
     #24.0.0-rc.1-dind
     securityContext:
       privileged: true
-# kubectl create -f docker-pod.yml
-# kubectl exec -it docker -- sh -c "docker version"
+        command: ["/bin/bash", "-c" ]
+        args:
+        - |
+          #!/usr/bin/env bash
+          #
+          set -x
+          export DATETIME=$(date +%Y%m%d_%H%M%S)
+          apt install -y curl apt-utils
+          docker run hello-world
