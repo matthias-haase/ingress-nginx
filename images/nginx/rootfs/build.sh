@@ -1,9 +1,9 @@
 #!/bin/bash
 set -x
-echo "140.82.121.4 github.com" >> /etc/hosts
-tail /etc/hosts
-curl -v github.com
-sleep 10
+#echo "140.82.121.4 github.com" >> /etc/hosts
+#tail /etc/hosts
+#curl -v github.com
+#sleep 10
 # Copyright 2023 The Kubernetes Authors.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
