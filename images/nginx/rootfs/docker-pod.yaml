@@ -1,35 +1,12 @@
-# https://stackoverflow.com/questions/76150514/running-docker-inside-a-container
-#
-# kubectl create -f docker-pod.yml
-# kubectl exec -it docker -- sh -c "docker version"
-#
-apiVersion: apps/v1
-kind: StatefulSet
+apiVersion: v1
+kind: Pod
 metadata:
-  name: docker-statefulset # Changed for clarity
+  name: docker
+  labels:
+    name: docker
 spec:
-  serviceName: docker-service # Changed for clarity
-  replicas: 1 # Set a specific number of replicas (e.g., 1)
-  selector:
-    matchLabels:
-      app: docker
-  template:
-    metadata:
-      labels:
-        app: docker
-    spec:
-      serviceAccountName: docker
-      containers:
-      - name: docker-container # Renamed for clarity
-        image: docker:24.0.0-rc.1-dind # Uncomment and set the correct image if needed
-        securityContext:
-          privileged: true
-#        command: ["sh", "-c", "docker run hello-world" ]
-#        args:
-#        - |
-#          #!/usr/bin/env bash
-#          #
-#          set -x
-#          export DATETIME=$(date +%Y%m%d_%H%M%S)
-#          #apt install -y curl apt-utils
-#          #docker run hello-world
+  containers:
+  - name: docker
+    image: docker
+    securityContext:
+      privileged: true
