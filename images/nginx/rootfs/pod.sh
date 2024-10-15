@@ -18,6 +18,6 @@ cd /ingress-nginx;\
 git checkout patch-opentelemetry-cpp-and-contrib-and-proto;\
 git status;\
 cd /ingress-nginx/images/nginx/rootfs;\
-docker build .;\
+docker build . 2>&1|tee /build.log;\
 ls;\
 echo END;"
