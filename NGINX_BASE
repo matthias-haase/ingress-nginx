@@ -1,1 +1,1 @@
-tsimonitoring/nginx:1.25.5@sha256:ff75de30a5c37e656834fff737517924063d819cfea7057b1d3faa500e072b08
+docker.io/tsimonitoring/nginx:1.25.5@sha256:ff75de30a5c37e656834fff737517924063d819cfea7057b1d3faa500e072b08
