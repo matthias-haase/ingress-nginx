@@ -14,8 +14,11 @@
 
 ARG BASE_IMAGE
 
+#mh20241016 ORG->
 #mh20241016 FROM ${BASE_IMAGE}
-FROM registry.k8s.io/ingress-nginx/nginx:v1.0.0
+#mh20241016 OK->
+#mh20241016 FROM registry.k8s.io/ingress-nginx/nginx:v1.0.0
+FROM docker.io/tsimonitoring/nginx:1.25.5
 
 ARG TARGETARCH
 ARG VERSION
