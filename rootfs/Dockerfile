@@ -14,7 +14,8 @@
 
 ARG BASE_IMAGE
 
-FROM ${BASE_IMAGE}
+#mh20241016 FROM ${BASE_IMAGE}
+FROM registry.k8s.io/ingress-nginx/nginx:v1.0.0
 
 ARG TARGETARCH
 ARG VERSION
