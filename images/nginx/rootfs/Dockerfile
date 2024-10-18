@@ -18,7 +18,7 @@ COPY . /
 RUN apk update \
   && apk upgrade \
   && apk add -U bash --no-cache \
-  && /build.sh 2>&1|tee /build.log
+  && /build.sh
 
 # Use a multi-stage build
 FROM alpine:3.20
