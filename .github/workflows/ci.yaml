@@ -191,7 +191,7 @@ jobs:
         run: |
           echo "building images..."
           export TAGNGINX=$(cat images/nginx/TAG)
-          make BASE_IMAGE=tsimonitoring/nginx:${TAGNGINX} clean-image build image image-chroot
+          make BASE_IMAGE=registry.k8s.io/ingress-nginx/nginx:${TAGNGINX} clean-image build image image-chroot
           make -C test/e2e-image image
 
           echo "creating images cache..."
