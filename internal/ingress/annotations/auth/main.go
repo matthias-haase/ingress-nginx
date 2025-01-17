@@ -19,6 +19,7 @@ package auth
 import (
 	"fmt"
 	"os"
+	"path/filepath"
 	"regexp"
 	"strings"
 
@@ -203,7 +204,7 @@ func (a auth) Parse(ing *networking.Ingress) (interface{}, error) {
 		return nil, err
 	}
 
-	passFilename := fmt.Sprintf("%v/%v-%v-%v.passwd", a.authDirectory, ing.GetNamespace(), ing.UID, secret.UID)
+	passFilename := filepath.Join(a.authDirectory, fmt.Sprintf("%v-%v-%v.passwd", ing.GetNamespace(), ing.UID, secret.UID))
 
 	switch secretType {
 	case fileAuth:
